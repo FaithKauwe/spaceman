@@ -126,14 +126,24 @@ def spaceman(secret_word):
     # check if the game has been won 
         if is_word_guessed(secret_word, letters_guessed):
             print("Congratulations, you guessed the word!")
-            return
+            play_again = input("Do you want to play again? y/n").lower()
+            if play_again == 'y':
+                return True
+            else:
+                return False
         if incorrect_guesses == max_incorrect_guesses:
             print(f"Sorry, you've run out of guesses. The secret word was '{secret_word}'.")
+            play_again = input("Do you want to play again? y/n").lower()
+            if play_again == 'y':
+                return True
+            else:
+                return False
 
 
 
 
 
-#These function calls that will start the game
-secret_word = load_word()
-spaceman(secret_word)
+while True:
+    secret_word = load_word()
+    if not spaceman(secret_word):
+        break
