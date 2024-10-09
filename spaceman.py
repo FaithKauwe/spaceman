@@ -94,7 +94,7 @@ def spaceman(secret_word):
     # initialize new variable at 0
     incorrect_guesses = 0
     # track incorrect_guesses in relation to max
-    max_incorrect_guesses = 0
+    max_incorrect_guesses = 7
 
     # introduce the game
     print("Welcome to Spaceman! Try to guess the secret word.")
@@ -123,11 +123,12 @@ def spaceman(secret_word):
             print(f"Incorrect guess. You have {max_incorrect_guesses - incorrect_guesses} guesses left.")
      # show the guessed word so far
         print(get_guessed_word(secret_word, letters_guessed))  
-    # check if the game has been won or lost
+    # check if the game has been won 
         if is_word_guessed(secret_word, letters_guessed):
             print("Congratulations, you guessed the word!")
             return
-    print(f"Sorry, you've run out of guesses. The secret word was '{secret_word}'.")
+        if incorrect_guesses == max_incorrect_guesses:
+            print(f"Sorry, you've run out of guesses. The secret word was '{secret_word}'.")
 
 
 
